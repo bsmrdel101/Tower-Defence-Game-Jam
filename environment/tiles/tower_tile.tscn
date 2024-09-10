@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc67x32clllw0"]
+
+[ext_resource type="Script" path="res://environment/tiles/BuildBtn.gd" id="1_egth5"]
+
+[node name="TowerTile" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.27, 0.27)
+
+[node name="BuildBtn" type="Button" parent="."]
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 32.0
+offset_bottom = 20.0
+scale = Vector2(0.684245, 0.684245)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Build"
+script = ExtResource("1_egth5")
+
+[connection signal="pressed" from="BuildBtn" to="BuildBtn" method="_on_pressed"]
