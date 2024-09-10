@@ -1,3 +1,59 @@
-[gd_scene format=3 uid="uid://ck4f1fms1erqn"]
+[gd_scene load_steps=4 format=3 uid="uid://b6k4o4folrehv"]
 
-[node name="HUD" type="Node"]
+[ext_resource type="Texture2D" uid="uid://ep17un3y12b7" path="res://sprites/UI/heart.png" id="1_eww6n"]
+[ext_resource type="Texture2D" uid="uid://bwk2s40sluctf" path="res://sprites/UI/coin.png" id="2_vymo2"]
+[ext_resource type="Script" path="res://UI/pause_btn.gd" id="3_6umhy"]
+
+[node name="HUD" type="MarginContainer"]
+top_level = true
+anchors_preset = -1
+anchor_right = 0.861
+anchor_bottom = 1.0
+offset_right = 0.12793
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="HealthContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HeartIcon" type="TextureRect" parent="TopBar/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("1_eww6n")
+expand_mode = 3
+
+[node name="HealthText" type="Label" parent="TopBar/HealthContainer"]
+layout_mode = 2
+text = "20"
+
+[node name="GoldContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="CoinIcon" type="TextureRect" parent="TopBar/GoldContainer"]
+layout_mode = 2
+texture = ExtResource("2_vymo2")
+expand_mode = 3
+
+[node name="GoldText" type="Label" parent="TopBar/GoldContainer"]
+layout_mode = 2
+text = "50"
+
+[node name="ExitBtn" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Exit"
+script = ExtResource("3_6umhy")
+
+[connection signal="pressed" from="ExitBtn" to="ExitBtn" method="_on_pressed"]
