@@ -1,18 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccrer00smwyxb"]
+[gd_scene load_steps=7 format=3 uid="uid://ccrer00smwyxb"]
 
 [ext_resource type="PackedScene" uid="uid://iwuskjkciqdo" path="res://levels/level1.tscn" id="1_4k4dj"]
+[ext_resource type="Script" path="res://game.gd" id="1_epnd0"]
 [ext_resource type="PackedScene" uid="uid://csre0xvvycwb1" path="res://entities/character/player.tscn" id="1_hlcxi"]
 [ext_resource type="PackedScene" uid="uid://b6k4o4folrehv" path="res://ui/hud.tscn" id="3_cypqn"]
+[ext_resource type="PackedScene" uid="uid://b0jbhb0qtfe8j" path="res://enemy.tscn" id="3_rpvk6"]
+
+[sub_resource type="Curve2D" id="Curve2D_axdy4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -272, 266, 0, 0, 0, 0, -270, 151, 0, 0, 0, 0, 205, 143, 0, 0, 0, 0, 210, -228, 0, 0, 0, 0, 81, -234, 0, 0, 0, 0, 77, -113, 0, 0, 0, 0, -269, -108, 0, 0, 0, 0, -270, 44, 0, 0, 0, 0, -180, 47, 0, 0, 0, 0, -173, -15, 0, 0, 0, 0, -15, -13, 0, 0, 0, 0, -18, 26)
+}
+point_count = 12
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_epnd0")
 
 [node name="Level1" parent="." instance=ExtResource("1_4k4dj")]
 
 [node name="Player" parent="." instance=ExtResource("1_hlcxi")]
 
 [node name="HUD" parent="." instance=ExtResource("3_cypqn")]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -414.0
-offset_bottom = -324.0
+offset_left = -578.0
+offset_top = -323.0
+offset_right = -416.0
+offset_bottom = -323.0
 size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_rpvk6")]
+z_index = 10
+position = Vector2(-272, 277)
+
+[node name="Path2D2" type="Path2D" parent="Enemy"]
+position = Vector2(272, -277)
+curve = SubResource("Curve2D_axdy4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy/Path2D2"]
+position = Vector2(-271.33, 227.477)
+rotation = -1.55341
+progress = 38.502
+
+[node name="SpawnerMarker" type="Marker2D" parent="."]
+position = Vector2(-272, 287)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
