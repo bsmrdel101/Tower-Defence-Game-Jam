@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6k4o4folrehv"]
 
-[ext_resource type="Texture2D" uid="uid://ep17un3y12b7" path="res://sprites/UI/heart.png" id="1_eww6n"]
-[ext_resource type="Texture2D" uid="uid://bwk2s40sluctf" path="res://sprites/UI/coin.png" id="2_vymo2"]
-[ext_resource type="Script" path="res://ui/pause_btn.gd" id="3_6umhy"]
+[ext_resource type="Texture2D" uid="uid://ep17un3y12b7" path="res://sprites/heart.png" id="1_eww6n"]
+[ext_resource type="Texture2D" uid="uid://bwk2s40sluctf" path="res://sprites/coin.png" id="2_vymo2"]
+[ext_resource type="Script" path="res://pause_btn.gd" id="3_6umhy"]
 [ext_resource type="Script" path="res://close_tower_ui.gd" id="4_tpc45"]
 [ext_resource type="Script" path="res://tower_building.gd" id="5_2b21h"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://iwuskjkciqdo"]
 
-[ext_resource type="Texture2D" uid="uid://0pww4ko8r0ei" path="res://sprites/environment/tiles.png" id="1_8b4em"]
-[ext_resource type="PackedScene" uid="uid://bc67x32clllw0" path="res://environment/tiles/tower_tile.tscn" id="2_5262c"]
+[ext_resource type="Texture2D" uid="uid://0pww4ko8r0ei" path="res://sprites/tiles.png" id="1_8b4em"]
+[ext_resource type="PackedScene" uid="uid://bc67x32clllw0" path="res://tower_tile.tscn" id="2_5262c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upeym"]
 resource_name = "Tiles"
