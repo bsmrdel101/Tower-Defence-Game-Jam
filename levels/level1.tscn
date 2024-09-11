@@ -35,3 +35,24 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="TowerTile" parent="Towers" instance=ExtResource("2_5262c")]
 position = Vector2(-16, -48)
+
+[node name="TowerTile2" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(-208, 16)
+
+[node name="TowerTile3" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(-240, -80)
+
+[node name="TowerTile4" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(-112, -144)
+
+[node name="TowerTile5" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(112, -208)
+
+[node name="TowerTile6" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(176, -208)
+
+[node name="TowerTile7" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(176, 112)
+
+[node name="TowerTile8" parent="Towers" instance=ExtResource("2_5262c")]
+position = Vector2(-112, 112)

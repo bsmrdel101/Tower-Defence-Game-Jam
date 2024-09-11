@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6k4o4folrehv"]
+[gd_scene load_steps=6 format=3 uid="uid://b6k4o4folrehv"]
 
 [ext_resource type="Texture2D" uid="uid://ep17un3y12b7" path="res://sprites/UI/heart.png" id="1_eww6n"]
 [ext_resource type="Texture2D" uid="uid://bwk2s40sluctf" path="res://sprites/UI/coin.png" id="2_vymo2"]
 [ext_resource type="Script" path="res://ui/pause_btn.gd" id="3_6umhy"]
+[ext_resource type="Script" path="res://close_tower_ui.gd" id="4_tpc45"]
+[ext_resource type="Script" path="res://tower_building.gd" id="5_2b21h"]
 
 [node name="HUD" type="MarginContainer"]
 top_level = true
@@ -12,48 +14,123 @@ anchor_bottom = 1.0
 offset_right = 0.12793
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="TopBar" type="HBoxContainer" parent="."]
+[node name="TopBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="HealthContainer" type="HBoxContainer" parent="TopBar"]
+[node name="HealthContainer" type="HBoxContainer" parent="TopBar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="HeartIcon" type="TextureRect" parent="TopBar/HealthContainer"]
+[node name="HeartIcon" type="TextureRect" parent="TopBar/HBoxContainer/HealthContainer"]
 layout_mode = 2
 texture = ExtResource("1_eww6n")
 expand_mode = 3
 
-[node name="HealthText" type="Label" parent="TopBar/HealthContainer"]
+[node name="HealthText" type="Label" parent="TopBar/HBoxContainer/HealthContainer"]
 layout_mode = 2
 text = "20"
 
-[node name="GoldContainer" type="HBoxContainer" parent="TopBar"]
+[node name="GoldContainer" type="HBoxContainer" parent="TopBar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="CoinIcon" type="TextureRect" parent="TopBar/GoldContainer"]
+[node name="CoinIcon" type="TextureRect" parent="TopBar/HBoxContainer/GoldContainer"]
 layout_mode = 2
 texture = ExtResource("2_vymo2")
 expand_mode = 3
 
-[node name="GoldText" type="Label" parent="TopBar/GoldContainer"]
+[node name="GoldText" type="Label" parent="TopBar/HBoxContainer/GoldContainer"]
 layout_mode = 2
 text = "50"
 
-[node name="ExitBtn" type="Button" parent="."]
+[node name="PauseBtn" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "Exit"
+text = "Pause"
+flat = true
 script = ExtResource("3_6umhy")
 
-[connection signal="pressed" from="ExitBtn" to="ExitBtn" method="_on_pressed"]
+[node name="BuildUI" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(170, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="BuildUI"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Header" type="MarginContainer" parent="BuildUI/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="CloseButton" type="Button" parent="BuildUI/Panel/Header"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_hover_color = Color(0.74, 0.1998, 0.1998, 1)
+text = "X"
+flat = true
+script = ExtResource("4_tpc45")
+
+[node name="Title" type="Label" parent="BuildUI/Panel/Header"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 1
+text = "Build Tower"
+horizontal_alignment = 1
+
+[node name="TowerOptions" type="MarginContainer" parent="BuildUI/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -92.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_2b21h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildUI/Panel/TowerOptions"]
+layout_mode = 2
+
+[node name="BuildCannonBtn" type="Button" parent="BuildUI/Panel/TowerOptions/VBoxContainer"]
+layout_mode = 2
+text = "Cannon - 15 gold"
+
+[node name="BuildIceBtn" type="Button" parent="BuildUI/Panel/TowerOptions/VBoxContainer"]
+layout_mode = 2
+text = "Ice Tower - 25 gold"
+
+[node name="BuildFireBtn" type="Button" parent="BuildUI/Panel/TowerOptions/VBoxContainer"]
+layout_mode = 2
+text = "Fire Tower - 40 gold"
+
+[connection signal="pressed" from="PauseBtn" to="PauseBtn" method="_on_pressed"]
+[connection signal="pressed" from="BuildUI/Panel/Header/CloseButton" to="BuildUI/Panel/Header/CloseButton" method="_on_pressed"]
+[connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildCannonBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_cannon_btn_pressed"]
+[connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildIceBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_ice_btn_pressed"]
+[connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildFireBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_fire_btn_pressed"]
