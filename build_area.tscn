@@ -3,18 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://4vkrkix8655j" path="res://icon.svg" id="1_80jur"]
 [ext_resource type="Script" path="res://build_tower.gd" id="1_r8oh4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r0qoj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptcl0"]
+size = Vector2(15, 15)
 
-[node name="TowerTile" type="Node2D"]
+[node name="BuildArea" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_r8oh4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_r0qoj")
+shape = SubResource("RectangleShape2D_ptcl0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
-scale = Vector2(0.27, 0.27)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("1_80jur")
+region_rect = Rect2(0, 0, 96, 208)
 
 [connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
