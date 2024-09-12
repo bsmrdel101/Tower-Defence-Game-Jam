@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://iwuskjkciqdo"]
+[gd_scene load_steps=5 format=3 uid="uid://iwuskjkciqdo"]
 
 [ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_2b3pn"]
 [ext_resource type="PackedScene" uid="uid://bc67x32clllw0" path="res://build_area.tscn" id="2_t0ruw"]
@@ -49,22 +49,11 @@ texture = ExtResource("1_2b3pn")
 3:9/0 = 0
 3:10/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_28xso"]
-load_path = "res://.godot/imported/tiles.png-f29defd6e309a9af15cb61d2b28e9181.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upeym"]
-resource_name = "Tiles"
-texture = SubResource("CompressedTexture2D_28xso")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_6kaux"]
-sources/2 = SubResource("TileSetAtlasSource_upeym")
 sources/0 = SubResource("TileSetAtlasSource_fye78")
 
 [node name="Level1" type="Node2D"]
+position = Vector2(552, 360)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6kaux")

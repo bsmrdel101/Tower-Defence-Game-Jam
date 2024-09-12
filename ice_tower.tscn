@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhpe3uqmu8m7f"]
+
+[ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_ytrat"]
+
+[node name="IceTower" type="Sprite2D"]
+texture = ExtResource("1_ytrat")
+region_enabled = true
+region_rect = Rect2(16, 48, 16, 16)

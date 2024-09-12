@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dksog3ytqoouw"]
+
+[ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_oe8k2"]
+
+[node name="FireTower" type="Sprite2D"]
+texture = ExtResource("1_oe8k2")
+region_enabled = true
+region_rect = Rect2(48, 64, 16, 16)

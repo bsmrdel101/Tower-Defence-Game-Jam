@@ -9,6 +9,5 @@
 anchor_mode = 0
 
 [node name="Level1" parent="." instance=ExtResource("1_4k4dj")]
-position = Vector2(552, 360)
 
 [node name="HUD" parent="." instance=ExtResource("3_cypqn")]

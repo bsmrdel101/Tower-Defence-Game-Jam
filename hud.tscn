@@ -130,6 +130,7 @@ text = "Fire Tower - 40 gold"
 
 [connection signal="pressed" from="PauseBtn" to="PauseBtn" method="_on_pressed"]
 [connection signal="pressed" from="BuildUI/Panel/Header/CloseButton" to="BuildUI/Panel/Header/CloseButton" method="_on_pressed"]
+[connection signal="selected_tower_location" from="BuildUI/Panel/TowerOptions" to="BuildUI/Panel/TowerOptions" method="_on_selected_tower_location"]
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildCannonBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_cannon_btn_pressed"]
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildIceBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_ice_btn_pressed"]
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildFireBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_fire_btn_pressed"]

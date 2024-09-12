@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://crl8e7wdnch1y"]
+
+[ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_crlsi"]
+[ext_resource type="Script" path="res://cannon_tower.gd" id="2_m2m1n"]
+
+[node name="CannonTower" type="Sprite2D"]
+texture = ExtResource("1_crlsi")
+region_enabled = true
+region_rect = Rect2(32, 80, 16, 16)
+script = ExtResource("2_m2m1n")
