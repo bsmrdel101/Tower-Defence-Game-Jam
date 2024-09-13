@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://qbratr0jtesh"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_jlok7"]
+[ext_resource type="Texture2D" uid="uid://4vkrkix8655j" path="res://icon.svg" id="2_lvhbs"]
+
+[sub_resource type="Curve2D" id="Curve2D_tsdjy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -272, 266, 0, 0, 0, 0, -270, 151, 0, 0, 0, 0, 205, 143, 0, 0, 0, 0, 210, -228, 0, 0, 0, 0, 81, -234, 0, 0, 0, 0, 77, -113, 0, 0, 0, 0, -269, -108, 0, 0, 0, 0, -270, 44, 0, 0, 0, 0, -180, 47, 0, 0, 0, 0, -173, -15, 0, 0, 0, 0, -15, -13, 0, 0, 0, 0, -18, 26)
+}
+point_count = 12
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_jlok7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("2_lvhbs")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(272, -277)
+curve = SubResource("Curve2D_tsdjy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-18, 26)
+rotation = 1.64757
+progress = 2058.93
