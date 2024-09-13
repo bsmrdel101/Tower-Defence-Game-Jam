@@ -1,8 +1,8 @@
 extends MarginContainer
 
-signal selected_tower_location(pos)
+signal selected_tower_location(col)
 
-var tower_position
+var build_area
 
 
 func _on_build_cannon_btn_pressed():
@@ -23,13 +23,16 @@ func _on_build_fire_btn_pressed():
 func build_tower(type: String):
 	var tower_scene = load("res://{tower}_tower.tscn".format({"tower": type}))
 	var tower = tower_scene.instantiate()
-	tower.position = tower_position
-	get_node("/root/Game/Level1").add_child(tower)
+	var parent_node = get_node("/root/Game/Level1")
+	var local_tower_position = parent_node.to_local(build_area.global_position)
+	tower.position = local_tower_position
+	parent_node.add_child(tower)
+	build_area.queue_free()
 
 
 func close_ui():
 	get_node("/root/Game/HUD/BuildUI").visible = false
 
 
-func _on_selected_tower_location(pos):
-	tower_position = pos
+func _on_selected_tower_location(col):
+	build_area = col
