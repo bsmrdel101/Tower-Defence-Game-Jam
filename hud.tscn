@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6k4o4folrehv"]
+[gd_scene load_steps=8 format=3 uid="uid://b6k4o4folrehv"]
 
 [ext_resource type="Texture2D" uid="uid://ep17un3y12b7" path="res://sprites/heart.png" id="1_eww6n"]
 [ext_resource type="Texture2D" uid="uid://bwk2s40sluctf" path="res://sprites/coin.png" id="2_vymo2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://close_tower_ui.gd" id="4_tpc45"]
 [ext_resource type="Script" path="res://tower_building.gd" id="5_2b21h"]
 [ext_resource type="Script" path="res://game_over_ui.gd" id="6_2oghl"]
+[ext_resource type="Script" path="res://PauseScreenUI.gd" id="7_i2dp5"]
 
 [node name="HUD" type="MarginContainer"]
 top_level = true
@@ -178,6 +179,56 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Main Menu"
 
+[node name="PauseScreenUI" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("7_i2dp5")
+
+[node name="Label" type="Label" parent="PauseScreenUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 151.0
+offset_right = 157.0
+offset_bottom = 234.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreenUI"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -53.0
+offset_right = 78.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="PauseScreenUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Resume
+"
+
+[node name="MainMenuBtn" type="Button" parent="PauseScreenUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Main Menu"
+
+[node name="ExitButton" type="Button" parent="PauseScreenUI/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
 [connection signal="pressed" from="PauseBtn" to="PauseBtn" method="_on_pressed"]
 [connection signal="pressed" from="BuildUI/Panel/Header/CloseButton" to="BuildUI/Panel/Header/CloseButton" method="_on_pressed"]
 [connection signal="selected_tower_location" from="BuildUI/Panel/TowerOptions" to="BuildUI/Panel/TowerOptions" method="_on_selected_tower_location"]
@@ -186,3 +237,6 @@ text = "Main Menu"
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildFireBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_fire_btn_pressed"]
 [connection signal="pressed" from="GameOverUI/Panel/VBoxContainer/RetryBtn" to="GameOverUI" method="_on_retry_btn_pressed"]
 [connection signal="pressed" from="GameOverUI/Panel/VBoxContainer/MainMenuBtn" to="GameOverUI" method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="PauseScreenUI/VBoxContainer/ResumeButton" to="PauseScreenUI" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseScreenUI/VBoxContainer/MainMenuBtn" to="PauseScreenUI" method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="PauseScreenUI/VBoxContainer/ExitButton" to="PauseScreenUI" method="_on_exit_button_pressed"]

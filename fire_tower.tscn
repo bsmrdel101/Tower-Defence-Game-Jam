@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dksog3ytqoouw"]
+[gd_scene load_steps=4 format=3 uid="uid://dksog3ytqoouw"]
 
 [ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_oe8k2"]
+[ext_resource type="Script" path="res://fire_tower.gd" id="2_dqerc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rib0k"]
+radius = 38.0526
 
 [node name="FireTower" type="Sprite2D"]
 texture = ExtResource("1_oe8k2")
 region_enabled = true
 region_rect = Rect2(48, 64, 16, 16)
+script = ExtResource("2_dqerc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rib0k")
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
