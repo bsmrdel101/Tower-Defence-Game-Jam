@@ -13,7 +13,7 @@ func take_damage(amount: int):
 	health -= amount
 
 func slow_down():
-	speed = 5
+	speed = 7
 
 func is_dead() -> bool:
 	if health <= 0:
@@ -28,7 +28,7 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("cannon_ball"):
-		take_damage(30)
+		take_damage(20)
 	if area.get_parent().is_in_group("fire_ball"):
 		take_damage(50)
 	if area.get_parent().is_in_group("ice_ball"):

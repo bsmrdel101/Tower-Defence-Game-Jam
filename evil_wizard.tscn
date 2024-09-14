@@ -12,6 +12,7 @@ rotation = 1.5708
 scale = Vector2(0.037, 0.037)
 script = ExtResource("1_qjhvc")
 speed = 17
+health = 280
 damage = 10
 gold = 15
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxpjl63x8h3ek"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_k6toh"]
-[ext_resource type="Texture2D" uid="uid://4vkrkix8655j" path="res://icon.svg" id="1_xcse4"]
+[ext_resource type="Texture2D" uid="uid://bypkofcgx31er" path="res://sprites/icons.png" id="2_3bc33"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5jy81"]
 radius = 6.0
@@ -10,6 +10,7 @@ radius = 6.0
 top_level = true
 z_as_relative = false
 script = ExtResource("1_k6toh")
+speed = 350
 
 [node name="Area2D" type="Area2D" parent="." groups=["cannon_ball"]]
 
@@ -17,7 +18,10 @@ script = ExtResource("1_k6toh")
 shape = SubResource("CircleShape2D_5jy81")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0703125, 0.0703125)
-texture = ExtResource("1_xcse4")
+position = Vector2(2.98023e-08, -1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_3bc33")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
