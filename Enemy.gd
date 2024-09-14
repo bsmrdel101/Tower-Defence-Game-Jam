@@ -1,7 +1,8 @@
-extends Node2D
+extends PathFollow2D
 
 @export var speed: int = 15
 @export var health: int = 100
+@export var gold: int = 10
 
 func set_pos(pos: Vector2):
 	position.x = pos.x
@@ -19,10 +20,9 @@ func is_dead() -> bool:
 	return false
 
 func _process(delta):
-	var path = get_parent()
-	path.set_progress(path.get_progress() + speed * delta)
+	set_progress(get_progress() + speed * delta)
 	if is_dead():
-		# add points
+		get_node("/root/Game").emit_signal("player_gain_gold", gold)
 		queue_free()
 
 func _on_area_2d_area_entered(area):

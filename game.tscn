@@ -14,9 +14,6 @@ anchor_mode = 0
 
 [node name="HUD" parent="." instance=ExtResource("3_cypqn")]
 
-[node name="StartTimer" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="player_gain_gold" from="." to="." method="_on_player_gain_gold"]
 [connection signal="player_spend_gold" from="." to="." method="_on_player_spend_gold"]
 [connection signal="player_take_damage" from="." to="." method="_on_player_take_damage"]
