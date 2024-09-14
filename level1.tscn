@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://iwuskjkciqdo"]
+[gd_scene load_steps=13 format=3 uid="uid://iwuskjkciqdo"]
 
 [ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_2b3pn"]
 [ext_resource type="PackedScene" uid="uid://bc67x32clllw0" path="res://build_area.tscn" id="2_t0ruw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1dribkm7wsx" path="res://zombie.tscn" id="5_6v4pl"]
 [ext_resource type="PackedScene" uid="uid://c7pw2qrmxr1ug" path="res://evil_wizard.tscn" id="6_cqhyf"]
 [ext_resource type="PackedScene" uid="uid://llegv771ji6e" path="res://skeleton.tscn" id="7_f18c1"]
+[ext_resource type="Script" path="res://base_collision.gd" id="8_dfq6q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fye78"]
 texture = ExtResource("1_2b3pn")
@@ -63,6 +64,9 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0nva"]
+size = Vector2(20, 26)
+
 [node name="Level1" type="Node2D"]
 position = Vector2(552, 360)
 
@@ -110,3 +114,13 @@ goblin = ExtResource("4_y30pv")
 zombie = ExtResource("5_6v4pl")
 evil_wizard = ExtResource("6_cqhyf")
 skeleton = ExtResource("7_f18c1")
+
+[node name="BaseCollision" type="Area2D" parent="."]
+position = Vector2(-56, 40)
+script = ExtResource("8_dfq6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseCollision"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_o0nva")
+
+[connection signal="area_entered" from="BaseCollision" to="BaseCollision" method="_on_area_entered"]
