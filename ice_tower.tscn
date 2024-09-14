@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhpe3uqmu8m7f"]
+[gd_scene load_steps=4 format=3 uid="uid://dhpe3uqmu8m7f"]
 
 [ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_ytrat"]
+[ext_resource type="Script" path="res://ice_tower.gd" id="2_kkaj6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8w5bd"]
 radius = 38.0526
@@ -9,8 +10,14 @@ radius = 38.0526
 texture = ExtResource("1_ytrat")
 region_enabled = true
 region_rect = Rect2(16, 48, 16, 16)
+script = ExtResource("2_kkaj6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8w5bd")
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
