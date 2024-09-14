@@ -11,6 +11,9 @@ position = Vector2(0, -1)
 rotation = 1.5708
 scale = Vector2(0.037, 0.037)
 script = ExtResource("1_om57a")
+speed = 60
+health = 50
+gold = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.894852, 0.894852)

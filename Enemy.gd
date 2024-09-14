@@ -2,6 +2,7 @@ extends PathFollow2D
 
 @export var speed: int = 15
 @export var health: int = 100
+@export var damage: int = 2
 @export var gold: int = 10
 
 func set_pos(pos: Vector2):

@@ -106,7 +106,6 @@ position = Vector2(-40, 104)
 curve = SubResource("Curve2D_akc4g")
 
 [node name="WaveManager" parent="." instance=ExtResource("3_b8e6g")]
-enemies_per_wave = Array[int]([1, 1, 1, 1, 1])
 goblin = ExtResource("4_y30pv")
 zombie = ExtResource("5_6v4pl")
 evil_wizard = ExtResource("6_cqhyf")
