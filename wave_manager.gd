@@ -19,6 +19,7 @@ extends Node
 var wave = 0
 var spawned_enemies = 0
 var wave_started = false
+var level_complete = false
 
 @export_category("References")
 @export var goblin: PackedScene
@@ -41,13 +42,14 @@ func _ready():
 
 func _process(delta):
 	var next_wave_ready = spawned_enemies == enemies_per_wave[wave - 1]
-	if next_wave_ready and wave > wave_amount:
+	if next_wave_ready and wave >= wave_amount and not level_complete:
 		# Level complete
+		level_complete = true
 		print("All waves complete")
 	elif next_wave_ready and wave_started:
 		# Wave complete
 		wave_started = false
-		if wave <= wave_amount:
+		if wave < wave_amount:
 			get_node("/root/Game/HUD/NextWaveContainer").visible = true
 			wave_end_timer.start()
 
@@ -77,9 +79,10 @@ func _on_spawn_enemy():
 		spawn_timer.stop()
 
 func _on_wave_end():
-	wave_end_timer.stop()
 	get_node("/root/Game/HUD/NextWaveContainer").visible = false
-	start_wave()
+	if wave < wave_amount:
+		wave_end_timer.stop()
+		start_wave()
 	
 func get_random_enemy(wave):
 	var available_enemies = []
