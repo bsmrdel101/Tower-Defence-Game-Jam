@@ -1,9 +1,18 @@
 extends PathFollow2D
 
+@export_category("Enemy Stats")
 @export var speed: int = 15
+var original_speed
 @export var health: int = 100
 @export var damage: int = 2
 @export var gold: int = 10
+
+@onready var freeze_timer = $FreezeTimer
+
+
+func _ready():
+	original_speed = speed
+	freeze_timer.connect("timeout", Callable(self, "_on_unfreeze"))
 
 func set_pos(pos: Vector2):
 	position.x = pos.x
@@ -14,6 +23,11 @@ func take_damage(amount: int):
 
 func slow_down():
 	speed = 7
+	freeze_timer.start()
+
+func _on_unfreeze():
+	freeze_timer.stop()
+	speed = original_speed
 
 func is_dead() -> bool:
 	if health <= 0:
