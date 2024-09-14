@@ -42,10 +42,10 @@ func _ready():
 
 func _process(delta):
 	var next_wave_ready = spawned_enemies == enemies_per_wave[wave - 1]
-	if next_wave_ready and wave >= wave_amount and not level_complete:
+	if next_wave_ready and wave >= wave_amount and path.get_child_count() == 0 and not level_complete:
 		# Level complete
 		level_complete = true
-		print("All waves complete")
+		get_node("/root/Game/HUD/LevelCompleteUI").visible = true
 	elif next_wave_ready and wave_started:
 		# Wave complete
 		wave_started = false

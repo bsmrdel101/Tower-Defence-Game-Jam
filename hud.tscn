@@ -179,6 +179,60 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Main Menu"
 
+[node name="LevelCompleteUI" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+script = ExtResource("6_2oghl")
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="LevelCompleteUI"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelCompleteUI/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.5
+offset_right = 163.5
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Level Complete"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompleteUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -53.0
+offset_right = 78.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ContinueBtn" type="Button" parent="LevelCompleteUI/Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Continue"
+
+[node name="MainMenuBtn" type="Button" parent="LevelCompleteUI/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Main Menu"
+
 [node name="PauseScreenUI" type="Panel" parent="."]
 visible = false
 layout_mode = 2
@@ -274,6 +328,8 @@ text = "Next Wave"
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildFireBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_fire_btn_pressed"]
 [connection signal="pressed" from="GameOverUI/Panel/VBoxContainer/RetryBtn" to="GameOverUI" method="_on_retry_btn_pressed"]
 [connection signal="pressed" from="GameOverUI/Panel/VBoxContainer/MainMenuBtn" to="GameOverUI" method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="LevelCompleteUI/Panel/VBoxContainer/ContinueBtn" to="LevelCompleteUI" method="_on_retry_btn_pressed"]
+[connection signal="pressed" from="LevelCompleteUI/Panel/VBoxContainer/MainMenuBtn" to="LevelCompleteUI" method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="PauseScreenUI/VBoxContainer/ResumeButton" to="PauseScreenUI" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseScreenUI/VBoxContainer/MainMenuBtn" to="PauseScreenUI" method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="PauseScreenUI/VBoxContainer/ExitButton" to="PauseScreenUI" method="_on_exit_button_pressed"]
