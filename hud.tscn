@@ -170,6 +170,7 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="RetryBtn" type="Button" parent="GameOverUI/Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Retry"
@@ -187,10 +188,6 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 100
 script = ExtResource("6_2oghl")
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 100
 
 [node name="Panel" type="Panel" parent="LevelCompleteUI"]
 layout_mode = 2
