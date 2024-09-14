@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhpe3uqmu8m7f"]
+[gd_scene load_steps=3 format=3 uid="uid://dhpe3uqmu8m7f"]
 
 [ext_resource type="Texture2D" uid="uid://cxngh0u66yqjr" path="res://sprites/tilesheet.png" id="1_ytrat"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w5bd"]
+radius = 38.0526
 
 [node name="IceTower" type="Sprite2D"]
 texture = ExtResource("1_ytrat")
 region_enabled = true
 region_rect = Rect2(16, 48, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8w5bd")
