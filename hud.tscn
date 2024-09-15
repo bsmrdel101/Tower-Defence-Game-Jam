@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6k4o4folrehv"]
+[gd_scene load_steps=8 format=3 uid="uid://b6k4o4folrehv"]
 
 [ext_resource type="Texture2D" uid="uid://ep17un3y12b7" path="res://sprites/heart.png" id="1_eww6n"]
 [ext_resource type="Texture2D" uid="uid://bwk2s40sluctf" path="res://sprites/coin.png" id="2_vymo2"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://tower_building.gd" id="5_2b21h"]
 [ext_resource type="Script" path="res://game_over_ui.gd" id="6_2oghl"]
 [ext_resource type="Script" path="res://PauseScreenUI.gd" id="7_i2dp5"]
-[ext_resource type="Texture2D" uid="uid://b40uv3boti3ih" path="res://sprites/game_over_text.png" id="7_o0ib0"]
-[ext_resource type="Texture2D" uid="uid://bkdj06dslh0gx" path="res://sprites/game_over_background.png" id="7_wjoia"]
 
 [node name="HUD" type="MarginContainer"]
 top_level = true
@@ -132,33 +130,31 @@ text = "Ice Tower - 40 gold"
 layout_mode = 2
 text = "Fire Tower - 100 gold"
 
-[node name="GameOverUI" type="Control" parent="."]
+[node name="GameOverUI" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
 script = ExtResource("6_2oghl")
 
-[node name="TextureRect" type="TextureRect" parent="GameOverUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_wjoia")
+[node name="Panel" type="Panel" parent="GameOverUI"]
+layout_mode = 2
 
-[node name="Label" type="TextureRect" parent="GameOverUI"]
+[node name="Label" type="Label" parent="GameOverUI/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -182.5
-offset_top = 161.0
-offset_right = 182.5
-offset_bottom = 244.0
+offset_left = -163.5
+offset_right = 163.5
+offset_bottom = 83.0
 grow_horizontal = 2
-texture = ExtResource("7_o0ib0")
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,12 +169,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="RetryBtn" type="Button" parent="GameOverUI/VBoxContainer"]
+[node name="RetryBtn" type="Button" parent="GameOverUI/Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Retry"
 
-[node name="MainMenuBtn" type="Button" parent="GameOverUI/VBoxContainer"]
+[node name="MainMenuBtn" type="Button" parent="GameOverUI/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Main Menu"
@@ -326,8 +323,8 @@ text = "Next Wave"
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildCannonBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_cannon_btn_pressed"]
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildIceBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_ice_btn_pressed"]
 [connection signal="pressed" from="BuildUI/Panel/TowerOptions/VBoxContainer/BuildFireBtn" to="BuildUI/Panel/TowerOptions" method="_on_build_fire_btn_pressed"]
-[connection signal="pressed" from="GameOverUI/VBoxContainer/RetryBtn" to="GameOverUI" method="_on_retry_btn_pressed"]
-[connection signal="pressed" from="GameOverUI/VBoxContainer/MainMenuBtn" to="GameOverUI" method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="GameOverUI/Panel/VBoxContainer/RetryBtn" to="GameOverUI" method="_on_retry_btn_pressed"]
+[connection signal="pressed" from="GameOverUI/Panel/VBoxContainer/MainMenuBtn" to="GameOverUI" method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="LevelCompleteUI/Panel/VBoxContainer/ContinueBtn" to="LevelCompleteUI" method="_on_retry_btn_pressed"]
 [connection signal="pressed" from="LevelCompleteUI/Panel/VBoxContainer/MainMenuBtn" to="LevelCompleteUI" method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="PauseScreenUI/VBoxContainer/ResumeButton" to="PauseScreenUI" method="_on_resume_button_pressed"]
