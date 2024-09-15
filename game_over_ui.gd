@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 func _on_retry_btn_pressed():
 	SceneManager.change_scene("res://level1.tscn")
